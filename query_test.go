@@ -17,7 +17,7 @@ func TestTemporalQueryWithAnd(t *testing.T) {
 	q.Query(SearchAttrWorkflowType, '=', testWorkflowName, LogicalOpAND)
 	q.And(SearchAttrExecutionStatus, '=', testStatus)
 	// e.g. "WorkflowType='TestMe' AND ExecutionStatus='Running'"
-	var expected string = fmt.Sprintf("%s='%s' %s %s='%s'", SearchAttrWorkflowType, testWorkflowName, LogicalOpAND, SearchAttrExecutionStatus, testStatus)
+	var expected string = fmt.Sprintf("%s = '%s' %s %s = '%s'", SearchAttrWorkflowType, testWorkflowName, LogicalOpAND, SearchAttrExecutionStatus, testStatus)
 	assert.Equal(t, expected, q.Encode())
 }
 
@@ -26,7 +26,7 @@ func TestTemporalQueryWithOr(t *testing.T) {
 	q.Query(SearchAttrWorkflowType, '=', testWorkflowName, LogicalOpAND)
 	q.Or(SearchAttrExecutionStatus, '=', testStatus)
 	// e.g. "WorkflowType='TestMe' OR ExecutionStatus='Running'"
-	var expected string = fmt.Sprintf("%s='%s' %s %s='%s'", SearchAttrWorkflowType, testWorkflowName, LogicalOpOR, SearchAttrExecutionStatus, testStatus)
+	var expected string = fmt.Sprintf("%s = '%s' %s %s = '%s'", SearchAttrWorkflowType, testWorkflowName, LogicalOpOR, SearchAttrExecutionStatus, testStatus)
 	assert.Equal(t, expected, q.Encode())
 }
 
